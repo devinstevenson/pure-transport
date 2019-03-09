@@ -1,5 +1,5 @@
 # pure-pyhive
-Provides a thrift_transport for use with hive connections with PyHive by using Pure-SASL.
+Provides a thrift_transport for use with hive connections with PyHive by defaulting to Pure-SASL.
 
 # Why 
 PyHive relies on the sasl library for hive connections, but allows the user to optionally provide thier own thrift_transport instead of relying on the PyHive to create it. The main use case for this is Windows users where the sasl library is extremely difficult to compile from source. 
