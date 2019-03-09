@@ -7,7 +7,11 @@ setup(
     version=purepyhive.__version__,
     author='Devin Stevenson',
     description="Pure Sasl Transport Thrift Transport for PyHive",
-    long_description='',
+    long_description=
+"""This package provides a thrift_transport for hive connections
+using PyHive. This is mainly beneficial as an implementation of Pure-SASL
+for Windows users where SASL is difficult to install. The other use case facilitated 
+is support for SSL Sockets, however it is left for the user to configure the socket.""",
     license='GPLv3+',
     url="https://github.com/devinstevenson/pure-pyhive",
     keywords='pyhive',
