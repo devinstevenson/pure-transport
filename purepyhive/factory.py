@@ -15,19 +15,21 @@ def transport_factory(host, port, username, password, **kwargs):
     """
     Creates a thrift_sasl transport for use with HIVE/PyHive. Only pass this object
     to PyHive connection.
-    :param host: str
-    :param port: int/str
-    :param username: str
+    :param host: str - host name
+    :param port: int/str - port number - hive default is 10000
+    :param username: str -
     :param password: str
     :param kwargs: optional
         use_ssl=True will use a SSL socket with validate=False, default is False
         socket_kwargs={}, pass custom kwargs to SSL socket
+        use_sasl=optionally select to use sasl library instead of PureSASL
     :return:
     """
     sasl_auth = 'PLAIN'
     use_ssl = kwargs.get('use_ssl', False)
     socket_kwargs = kwargs.get('socket_kwargs')
     kerberos_service_name = kwargs.get('kerberos_service_name', None)
+    use_sasl = kwargs.get('use_sasl', False)
     if use_ssl:
         if socket_kwargs:
             socket = TSSLSocket(host, port, **socket_kwargs)
@@ -36,7 +38,7 @@ def transport_factory(host, port, username, password, **kwargs):
     else:
         socket = TSocket(host, port)  # basic socket
 
-    if False:  #os.name == 'posix':
+    if use_sasl:
         import sasl
 
         def sasl_factory():
@@ -52,18 +54,12 @@ def transport_factory(host, port, username, password, **kwargs):
             sasl_client.init()
             return sasl_client
 
-        # ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS)
-        # socket = TSSLSocket(host, port, ssl_context=ssl_context)
-
-    elif True: # sys.platform == 'win32' or sys.platform == 'cygwin':
+    else:
         from sasl_compat import PureSASLClient
 
         def sasl_factory():
             return PureSASLClient(host, username=username, password=password,
                                   service=kerberos_service_name, mechanism=sasl_auth)
-
-    else:
-        raise NotImplementedError("transport not supported for this platform")
 
     transport = thrift_sasl.TSaslClientTransport(sasl_factory, sasl_auth, socket)
     return transport

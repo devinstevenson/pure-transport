@@ -16,7 +16,7 @@ is support for SSL Sockets, however it is left for the user to configure the soc
     url="https://github.com/devinstevenson/pure-pyhive",
     keywords='pyhive',
     packages=['purepyhive'],
-    install_requires=['pyhive', 'thrift', 'pure-sasl'],
+    install_requires=['thrift', 'pure-sasl>=0.3.0', 'thrift-sasl'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
