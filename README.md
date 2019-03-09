@@ -45,3 +45,7 @@ I recommend editing your `hive.py` file to comment out this part on lines 135-13
         raise ValueError("thrift_transport cannot be used with "
                          "host/port/auth/kerberos_service_name/password")
 ```
+
+# Contributions
+
+Contributions Welcome. 
