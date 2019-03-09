@@ -27,6 +27,7 @@ def transport_factory(host, port, username, password, **kwargs):
     sasl_auth = 'PLAIN'
     use_ssl = kwargs.get('use_ssl', False)
     socket_kwargs = kwargs.get('socket_kwargs')
+    kerberos_service_name = kwargs.get('kerberos_service_name', None)
     if use_ssl:
         if socket_kwargs:
             socket = TSSLSocket(host, port, **socket_kwargs)
@@ -35,7 +36,7 @@ def transport_factory(host, port, username, password, **kwargs):
     else:
         socket = TSocket(host, port)  # basic socket
 
-    if os.name == 'posix':
+    if False:  #os.name == 'posix':
         import sasl
 
         def sasl_factory():
@@ -54,7 +55,7 @@ def transport_factory(host, port, username, password, **kwargs):
         # ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS)
         # socket = TSSLSocket(host, port, ssl_context=ssl_context)
 
-    elif sys.platform == 'win32' or sys.platform == 'cygwin':
+    elif True: # sys.platform == 'win32' or sys.platform == 'cygwin':
         from sasl_compat import PureSASLClient
 
         def sasl_factory():
