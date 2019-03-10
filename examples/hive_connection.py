@@ -1,4 +1,4 @@
-import purepyhive
+import puretransport
 from pyhive import hive
 
 transport = purepyhive.transport_factory(host='host',
