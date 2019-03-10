@@ -27,7 +27,7 @@ def transport_factory(host, port, username, password, **kwargs):
     """
     sasl_auth = 'PLAIN'
     use_ssl = kwargs.get('use_ssl', False)
-    socket_kwargs = kwargs.get('socket_kwargs')
+    socket_kwargs = kwargs.get('socket_kwargs', {})
     kerberos_service_name = kwargs.get('kerberos_service_name', None)
     use_sasl = kwargs.get('use_sasl', False)
     if use_ssl:

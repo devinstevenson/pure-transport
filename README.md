@@ -1,12 +1,12 @@
-# pure-pyhive
+# pure-transport
 Provides a thrift_transport for use with hive connections with PyHive by defaulting to Pure-SASL.
 
 # Why 
-PyHive relies on the sasl library for hive connections, but allows the user to optionally provide thier own thrift_transport instead of relying on the PyHive to create it. The main use case for this is Windows users where the sasl library is extremely difficult to compile from source. 
+PyHive relies on the sasl library for hive connections, but allows the user to optionally provide their own thrift_transport instead of relying on PyHive to create it. The main use case for this is Windows users where the sasl library is extremely difficult to compile from source. 
 
-The other main use case for providing your own thrift_transport is to use other socket types, such as SSL.
+The other use case for providing your own thrift_transport is to use other socket types, such as SSL.
 
-The pure-pyhive has basic support for using SSL sockets in the thrift transport.
+The pure-transport has basic support for using SSL sockets in the thrift transport by passing `use_ssl=True` and optionally `socket_kwargs`.
 
 
 ### Examples
@@ -21,7 +21,7 @@ clone repo and run
 
 or 
 
-```pip install pure-pyhive```
+```pip install pure-transport```
 
 ### Dependencies
 ```
