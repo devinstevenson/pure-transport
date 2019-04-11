@@ -1,10 +1,10 @@
 from sqlalchemy import create_engine
-import purepyhive
+import puretransport
 
-transport = purepyhive.transport_factory(host='host',
-                                         port=10000,
-                                         username='username',
-                                         password='secret')
+transport = puretransport.transport_factory(host='host',
+                                            port=10000,
+                                            username='username',
+                                            password='secret')
 
 # connection string pattern hive://username@/database_name
 engine = create_engine('hive://username@/default',
