@@ -1,11 +1,11 @@
-import purepyhive
+import puretransport
 from pyhive import hive
 
-transport = purepyhive.transport_factory(host='host',
-                                         port=10000,
-                                         username='username',
-                                         password='secret',
-                                         use_ssl=True)
+transport = puretransport.transport_factory(host='host',
+                                            port=10000,
+                                            username='username',
+                                            password='secret',
+                                            use_ssl=True)
 
 hive_con = hive.connect(username='username', thrift_transport=transport,
                         database='default')
