@@ -55,7 +55,7 @@ def transport_factory(host, port, username, password, **kwargs):
             return sasl_client
 
     else:
-        from sasl_compat import PureSASLClient
+        from .sasl_compat import PureSASLClient
 
         def sasl_factory():
             return PureSASLClient(host, username=username, password=password,
