@@ -16,7 +16,7 @@ is support for SSL Sockets, however it is left for the user to configure the soc
     url="https://github.com/devinstevenson/pure-transport",
     keywords='pyhive',
     packages=['puretransport'],
-    install_requires=['thrift', 'pure-sasl>=0.3.0', 'thrift-sasl'],
+    install_requires=['thrift', 'pure-sasl>=0.3.0', 'thrift_sasl'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
