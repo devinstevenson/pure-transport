@@ -25,7 +25,7 @@ def transport_factory(host, port, username, password, **kwargs):
         use_sasl=optionally select to use sasl library instead of PureSASL
     :return:
     """
-    sasl_auth = 'PLAIN'
+    sasl_auth = kwargs.get('sasl_auth', 'PLAIN')
     use_ssl = kwargs.get('use_ssl', False)
     socket_kwargs = kwargs.get('socket_kwargs', {})
     kerberos_service_name = kwargs.get('kerberos_service_name', None)
